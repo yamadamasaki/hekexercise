@@ -33,4 +33,20 @@ class ReservationServiceSpec extends Specification {
         r.fromDate == from
         r.toDate == to
     }
+
+    void "指定された機器が予約されているかどうかを確認する"() {
+        setup:
+        def who = new Person(name:"山田").save()
+        def what = new Appliance(name:"プロジェクタ1").save()
+        def from = new Date(115/*2015*/, 7/*august*/, 1, 10, 0)
+        def to = new Date(115/*2015*/, 7/*august*/, 1, 12, 0)
+        when:
+        reservationService.reserve(who, what, from, to)
+        then:
+        !reservationService.isReserved(what, new Date(115, 7, 1, 9, 0))
+        reservationService.isReserved(what, new Date(115, 7, 1, 10, 0))
+        reservationService.isReserved(what, new Date(115, 7, 1, 11, 0))
+        !reservationService.isReserved(what, new Date(115, 7, 1, 12, 0))
+    }
+
 }
