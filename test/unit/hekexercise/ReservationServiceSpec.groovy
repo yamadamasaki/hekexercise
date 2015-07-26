@@ -8,8 +8,10 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(ReservationService)
-@Mock([Person, Appliance])
+@Mock([Person, Appliance, Reservation])
 class ReservationServiceSpec extends Specification {
+
+    def reservationService = new ReservationService()
 
     def setup() {
     }
@@ -24,7 +26,7 @@ class ReservationServiceSpec extends Specification {
         def from = new Date(115/*2015*/, 7/*august*/, 1, 10, 0)
         def to = new Date(115/*2015*/, 7/*august*/, 1, 12, 0)
         when:
-        def r = ReservationService.reserve(who, what, from, to)
+        def r = reservationService.reserve(who, what, from, to)
         then:
         r.who == who
         r.what == what
