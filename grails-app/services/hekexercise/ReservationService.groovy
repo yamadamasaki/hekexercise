@@ -9,6 +9,6 @@ class ReservationService {
     }
 
     def isReserved(Appliance what, Date when) {
-        Reservation.findByWhatAndFromDateLessThanEqualsAndToDateGreaterThan(what, when, when)
+        Reservation.findByWhatAndFromDateLessThanEqualsAndToDateGreaterThan(what, when, when)?true:false
     }
 }
