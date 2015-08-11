@@ -51,7 +51,13 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+
         compile "org.gcontracts:gcontracts-core:1.2.12"
+
+        test "org.seleniumhq.selenium:selenium-firefox-driver:2.45.0"
+        test "org.gebish:geb-spock:0.12.1"
+        compile 'org.apache.httpcomponents:httpcore:4.3'
+        compile 'org.apache.httpcomponents:httpclient:4.3'
     }
 
     plugins {
@@ -62,6 +68,8 @@ grails.project.dependency.resolution = {
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
         compile ":asset-pipeline:2.1.5"
+
+        test "org.grails.plugins:geb:0.12.1"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.8.1" // or ":hibernate:3.6.10.18"
