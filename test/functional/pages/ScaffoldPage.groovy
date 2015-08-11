@@ -1,4 +1,10 @@
+package pages
 
-/**
- * Created by yamadamasaki on 15/08/11.
- */
+import geb.Page
+
+class ScaffoldPage extends Page {
+    static content = {
+        heading { $("h1") }
+        message { $("div.message").text() }
+    }
+}

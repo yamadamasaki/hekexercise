@@ -1,4 +1,13 @@
+package pages
 
-/**
- * Created by yamadamasaki on 15/08/11.
- */
+class CreatePage extends ScaffoldPage {
+
+    static at = {
+        title ==~ /Create.+/
+    }
+
+    static content = {
+        createButton(to: ShowPage) { create() }
+    }
+
+}

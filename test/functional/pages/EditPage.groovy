@@ -1,4 +1,14 @@
+package pages
 
-/**
- * Created by yamadamasaki on 15/08/11.
- */
+class EditPage extends ScaffoldPage {
+
+    static at = {
+        heading.text() ==~ /Edit.+/
+    }
+
+    static content = {
+        updateButton(to: ShowPage) { $("input", value: "Update") }
+        deleteButton(to: ListPage) { $("input", value: "Delete") }
+    }
+
+}
