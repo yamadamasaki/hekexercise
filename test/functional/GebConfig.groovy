@@ -23,5 +23,10 @@ driver = {
     new HtmlUnitDriver(true)
 }
 
+waiting {
+    timeout = 60
+    retryInterval = 0.5
+}
+
 baseNavigatorWaiting = true
 atCheckWaiting = true
