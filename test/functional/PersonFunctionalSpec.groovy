@@ -6,10 +6,6 @@ import pages.*
 
 @Stepwise
 class PersonFunctionalSpec extends GebReportingSpec {
-    def setup() {
-        browser.driver.manage().window().setSize(new Dimension(1000, 640))
-    }
-
     def "there are no people"() {
         when:
         to ListPage

@@ -55,6 +55,7 @@ grails.project.dependency.resolution = {
         compile "org.gcontracts:gcontracts-core:1.2.12"
 
         test "org.seleniumhq.selenium:selenium-firefox-driver:2.45.0"
+        test 'org.seleniumhq.selenium:selenium-htmlunit-driver:2.45.0'
         test "org.gebish:geb-spock:0.12.1"
         compile 'org.apache.httpcomponents:httpcore:4.3'
         compile 'org.apache.httpcomponents:httpclient:4.3'
