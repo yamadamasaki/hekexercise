@@ -1,5 +1,5 @@
 import geb.spock.GebReportingSpec
-
+import org.openqa.selenium.Dimension
 import spock.lang.*
 
 import pages.*
@@ -7,7 +7,7 @@ import pages.*
 @Stepwise
 class PersonFunctionalSpec extends GebReportingSpec {
     def setup() {
-        browser.driver.manage().window().maximize()
+        browser.driver.manage().window().setSize(new Dimension(1000, 640))
     }
 
     def "there are no people"() {
