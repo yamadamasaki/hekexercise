@@ -18,11 +18,17 @@ class ReservationServiceSpec extends Specification {
     def from
     def to
 
+    def gc
+    def p3
+
     def setup() {
         who = new Person(name:"山田").save()
         what = new Appliance(name:"プロジェクタ1").save()
         from = new Date(115/*2015*/, 7/*august*/, 1, 9, 0)
         to = new Date(115/*2015*/, 7/*august*/, 1, 12, 0)
+
+        gc = new Person(name:"Graham Chapman").save()
+        p3 = new Appliance(name:"プロジェクタ3").save()
     }
 
     def cleanup() {
@@ -106,4 +112,33 @@ class ReservationServiceSpec extends Specification {
         then:
         reservationService.reserve(who, new Appliance(name:"プロジェクタ2").save(), from, new Date(115, 7, 1, 10, 0))
     }
+
+    void "別のひとが同じ機器に対して重複しない予約をする"() {
+        when:
+        reservationService.reserve(who, what, from, to)
+        then:
+        reservationService.reserve(gc, what, new Date(115, 7, 1, 12, 0), new Date(115, 7, 1, 15, 0))
+    }
+
+    void "別のひとが同じ機器に対して重複する予約をする"() {
+        when:
+        reservationService.reserve(who, what, from, to)
+        then:
+        !reservationService.reserve(gc, what, new Date(115, 7, 1, 10, 0), new Date(115, 7, 1, 11, 0))
+    }
+
+    void "別のひとが異なる機器に対して重複しない予約をする"() {
+        when:
+        reservationService.reserve(who, what, from, to)
+        then:
+        reservationService.reserve(gc, p3, new Date(115, 7, 1, 12, 0), new Date(115, 7, 1, 15, 0))
+    }
+
+    void "別のひとが異なる機器に対して重複する予約をする"(){
+        when:
+        reservationService.reserve(who, what, from, to)
+        then:
+        reservationService.reserve(gc, p3, new Date(115, 7, 1, 10, 0), new Date(115, 7, 1, 11, 0))
+    }
+
 }
