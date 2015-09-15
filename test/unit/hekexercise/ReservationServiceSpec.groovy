@@ -2,6 +2,7 @@ package hekexercise
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
+import org.spockframework.mock.ZeroOrNullResponse
 import spock.lang.Specification
 
 /**
@@ -35,6 +36,24 @@ class ReservationServiceSpec extends Specification {
     }
 
     void "予約を一つだけ作る"() {
+        when:
+        def r = reservationService.reserve(who, what, from, to)
+        then:
+        r.who == who
+        r.what == what
+        r.fromDate == from
+        r.toDate == to
+    }
+
+    def personService = Stub(PersonService)
+    def applianceService = Stub(ApplianceService)
+
+    void "予約を一つだけ作る2"() {
+        given:
+        personService.add(_) >> new Person(name:"yamada").save()
+        applianceService.add(_) >> new Appliance(name:"projector").save()
+        who = personService.add([name:"yamada"])
+        what = applianceService.add([name:"projector"])
         when:
         def r = reservationService.reserve(who, what, from, to)
         then:
