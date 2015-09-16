@@ -6,11 +6,11 @@ class ListPage extends ScaffoldPage {
     static url = "person/index"
 
     static at = {
-        title ==~ /Person List/
+        title ==~ /Personリスト/
     }
 
     static content = {
-        newPersonButton(to: CreatePage) { $("a", text: "New Person") }
+        newPersonButton(to: CreatePage) { $("a", text: "Personを新規作成") }
         peopleTable { $("div.content table", 0) }
         personRow { module PersonRow, personRows[it] }
         personRows(required: false) { peopleTable.find("tbody").find("tr") }

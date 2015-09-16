@@ -17,15 +17,22 @@
 //    driverInstance
 //}
 
-import org.openqa.selenium.htmlunit.HtmlUnitDriver
+//import org.openqa.selenium.htmlunit.HtmlUnitDriver
+//
+//driver = {
+//    new HtmlUnitDriver(true)
+//}
+//
+//waiting {
+//    timeout = 60
+//    retryInterval = 0.5
+//}
+
+import org.openqa.selenium.chrome.ChromeDriver
 
 driver = {
-    new HtmlUnitDriver(true)
-}
-
-waiting {
-    timeout = 60
-    retryInterval = 0.5
+    System.setProperty('webdriver.chrome.driver', '/usr/local/bin/chromedriver')
+    new ChromeDriver()
 }
 
 baseNavigatorWaiting = true

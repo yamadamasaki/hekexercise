@@ -3,7 +3,7 @@ package pages
 class CreatePage extends ScaffoldPage {
 
     static at = {
-        title ==~ /Create.+/
+        title ==~ /.+を作成/
     }
 
     static content = {

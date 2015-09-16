@@ -67,7 +67,7 @@ class PersonFunctionalSpec extends GebReportingSpec {
         withConfirm { deleteButton.click() }
         then:
         at ListPage
-        message == "Person $deletedId deleted"
+        message == "Person(id:"+deletedId+")を削除しました。"
         personRows.size() == 0
     }
 }
